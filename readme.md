@@ -1,4 +1,4 @@
-# Topic Modeling with an Unsupervised Machine Learning algorithm with amendments an debates in the French National Assemblyrm
+# Topic Modeling with an Unsupervised Machine Learning algorithm with amendments an debates in the French National Assembly
 
 ## Collect data 
 Download data [here](https://data.assemblee-nationale.fr/travaux-parlementaires/amendements/tous-les-amendements) in JSON or XML, no API. MAYL uri
