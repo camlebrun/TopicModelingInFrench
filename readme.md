@@ -1,24 +1,26 @@
-# Topic Modeling with an Unsupervised Machine Learning algorithm with amendments an debates in the French National Assembly
+# Topic Modeling with an Unsupervised Machine Learning algorithm with proposed laws  and debates in the French National Assembly by political party.
+Proposed laws by 
+* deputies
+* gouvernement 
 
 ## Collect data 
-Download data [here](https://data.assemblee-nationale.fr/travaux-parlementaires/amendements/tous-les-amendements) in JSON or XML, no API. MAYL uri
-ISSUES: Data format in Unicode, not UTF-8. Need to convert to UTF-8 and have "good" data
+Scraping 
 
 ## Choose algorithm for topic modeling 
-- LDA ? 
+- LDA 
 
 ## Release 
-1/ amendments
+1/ proposed laws by gov
+2/ proposed laws by deputies
 2/ debates
 
 ## Preprocessing
-- Remove stop words ?
+
 
 ## Training model 
-- Local 
+- Local ?
 - Cloud ? 
   
 ## Reporting 
-* Static on Github pages ?
 * Streamlit ?
 * HeroKu ? 
