@@ -2,6 +2,7 @@
 
 ## Collect data 
 Download data [here](https://data.assemblee-nationale.fr/travaux-parlementaires/amendements/tous-les-amendements) in JSON or XML, no API. MAYL uri
+
 ISSUES: Data format in Unicode, not UTF-8. Need to convert to UTF-8 and have "good" data
 
 ## Choose algorithm for topic modeling 
@@ -9,6 +10,7 @@ ISSUES: Data format in Unicode, not UTF-8. Need to convert to UTF-8 and have "go
 
 ## Release 
 1/ amendments
+
 2/ debates
 
 ## Preprocessing
