@@ -8,7 +8,7 @@ Le but de ce projet est de comprendre les champs lexicaux utilisés par les diff
 
 Afin d'avoir un modéle robuste et pertinant c'est la légistature précédantes qui sera utilisé (Macron 2017-2022) puis actuelle (Macron 2022-2027). 
 
-<details open>
+<details>
 <summary> + d'info sur le choix de la donnée</summary>
 Afin d'avoir un modéle robuste et pertinant c'est la légistature précédantes qui sera utilisé (Macron 2017-2022) puis actuelle (Macron 2022-2027). 
 Nous sommes aux début de la nouvelle légistature, donc il le nombre de données et restraint. Avec peu de données les modéles 
