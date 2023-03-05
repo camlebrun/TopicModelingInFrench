@@ -58,17 +58,22 @@ class TextInformation:
         return None
 
 
+
 def clean_data(input_file, output_file):
     # lecture des données
     data = pd.read_csv(input_file)
-    to_analz_2 = data.replace(regex=[r'\"\[\''], value='').replace(regex=[r'\'\]\"'], value='').replace(regex=[r'\\xa0'], value=' ')
+    to_analz_2 = data.replace(regex=['\"\[\''], value='').replace(regex=['\'\]\"'], value='').replace(regex=[r'\\xa0'], value=' ')
 
     # suppression du fichier existant s'il existe
     if os.path.exists(output_file):
         os.remove(output_file)
 
+    # appliquer la même transformation sur to_analz_2
+    to_analz_2 = to_analz_2.replace(regex=['\"\[\''], value='').replace(regex=['\'\]\"'], value='').replace(regex=[r'\\xa0'], value=' ')
+
     # enregistrement des données nettoyées dans un nouveau fichier csv
     to_analz_2.to_csv(output_file, index=False, encoding='utf-8-sig')
+
 
 
 def main(urls):
@@ -87,7 +92,7 @@ def main(urls):
             continue
 
     df = pd.DataFrame(result, columns=['Information', 'Date', 'exposee', 'texte_lois'])
-    #df = df.replace(regex=[r'\"\[\''], value='').replace(regex=[r'\'\]\"'], value='').replace(regex=[r'\\xa0'], value=' ')
+    df = df.replace(regex=['\[\''], value='').replace(regex=['\'\]\"'], value='').replace(regex=[r'\\xa0'], value=' ')
 
    
 
@@ -106,5 +111,5 @@ def main(urls):
 
 
 urls = [f"https://www.assemblee-nationale.fr/dyn/opendata/PRJLANR5L15B{i:04d}.html" for i in range(
-    0, 5000)]
+    0, 6000)]
 main(urls)
