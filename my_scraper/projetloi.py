@@ -71,13 +71,15 @@ class WebScraper:
             date = text_info.get_date()
             texts = text_info.get_texts()
             helo = text_info.get_helo()
-            self.result.append({
-                'url': url,
-                'information': information,
-                'date': date,
-                'texts': texts,
-                'helo': helo
-            })
+            if date is not None:
+                self.result.append({
+                    'url': url,
+                    'information': information,
+                    'date': date,
+                    'texts': texts,
+                    'helo': helo
+                })
+
             time.sleep(0.1) # Pause de 0.1 seconde entre chaque requête pour éviter de surcharger le serveur
         
         # save scraped data to output file
