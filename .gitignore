@@ -1,2 +1,4 @@
 *env
-scraping 
+cache
+*pyc
+*csv
