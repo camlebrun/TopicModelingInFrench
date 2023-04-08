@@ -42,21 +42,38 @@ class TextInformation:
             words = date_text.split(" ")
             day = words[-3]
             month = words[-2]
-            year = words[-1]
+            year = words[-1].replace(".", "")
             return f"{day} {month} {year}"
         return None
 
     def get_motifs(self):
-        motifs = self.soup.find_all('p', {'class': 'assnatLoiTexte'})
-        if motifs:
-            return [text.text.strip() for text in motifs]
-        return None
-    
+        try:
+            div_assnat = self.soup.select('div.assnatSection2')
+            #motifs = div_assnat[0].find_all('p', {'class': 'assnatLoiTexte'})
+            motifs_text = [div_assnat.text.strip() for div_assnat in div_assnat]
+            return motifs_text
+        except Exception as e:
+            motifs_text = None
+            print("Erreur :", e)
+            return motifs_text
+
     def get_projet_lois(self):
-        section3 = self.soup.find('div', {'class': 'assnatSection3'})
-        if section3:
-            return   [text.text.strip() for text in section3]
-        return None
+        try:
+            section4 = self.soup.select('div.assnatSection4')
+            if section4:
+                # If section 4 exists, extract its content
+                section4 = section4[0].find_all('p', {'class': 'assnatLoiTexte'})
+                projet_lois = [motif.text.strip() for motif in section4]
+            else:
+                # If section 4 doesn't exist, extract the specified section
+                projet_lois = self.soup.select('div.assnatSection3')
+                projet_lois = projet_lois[0].find_all('p', {'class': 'assnatLoiTexte'})
+                projet_lois = [motif.text.strip() for motif in projet_lois]
+
+            return projet_lois
+        except Exception as e:
+            projet_lois = None
+            return projet_lois
 
 class WebScraper:
     def __init__(self, urls):
@@ -95,7 +112,8 @@ class WebScraper:
         data = pd.read_csv(input_file)
         
         # clean the data
-        to_analz_2 = data.replace(regex=[r'\[\''], value='').replace(regex=[r'\]\''], value='').replace(regex=[r'\\xa0'], value=' ').replace(regex=[r'\\"'], value='')
+        to_analz_2 = data.replace(regex=[r'\[\''], value='').replace(regex=[r'\]\''], value='').replace(regex=[r'\\xa0'], value=' ').replace(regex=[r'\\"'], value='').replace(regex=[r'\\n'], value='').replace(regex=[r'\\t'], value='')
+
         if os.path.exists(output_file):
             os.remove(output_file)
 
